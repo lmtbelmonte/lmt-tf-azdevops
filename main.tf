@@ -1,5 +1,9 @@
+# Author          : Luis Merino Tronocoso
+# Creation Date   : 16/07/2024
+# Description     : EPPO IAC POC - Initial Resources to be created with terraform for the IAC POC   
+
 resource "azurerm_resource_group" "example" {
-  name     = "${var.prefix}-rg"
+  name     = "${var.prefix}-DEV"
   location = var.location
 }
 
@@ -37,10 +41,10 @@ resource "azurerm_virtual_machine" "main" {
   vm_size               = "Standard_DS1_v2"
 
   # Uncomment this line to delete the OS disk automatically when deleting the VM
-  # delete_os_disk_on_termination = true
+  delete_os_disk_on_termination = true
 
   # Uncomment this line to delete the data disks automatically when deleting the VM
-  # delete_data_disks_on_termination = true
+  delete_data_disks_on_termination = true
 
   storage_image_reference {
     publisher = "Canonical"
@@ -55,14 +59,14 @@ resource "azurerm_virtual_machine" "main" {
     managed_disk_type = "Standard_LRS"
   }
   os_profile {
-    computer_name  = "hostname"
-    admin_username = "testadmin"
-    admin_password = "Password1234!"
+    computer_name  = "iac-poc-host"
+    admin_username = "lmtbelmonte"
+    admin_password = "iacpocPass1234!"
   }
   os_profile_linux_config {
     disable_password_authentication = false
   }
   tags = {
-    environment = "staging"
+    environment = "DEV"
   }
 }
