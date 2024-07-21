@@ -4,9 +4,9 @@
 #                                  Mandatory to make a az login and select the correct subscription before attempting to execute
 
 #!/bin/bash
-export RESOURCE_GROUP_NAME  =RG-IAC-POC
-export STORAGE_ACCOUNT_NAME =sapoctfstate
-export CONTAINER_NAME       =sa-poc-tfstate
+export RESOURCE_GROUP_NAME="RG-IAC-POC"
+export STORAGE_ACCOUNT_NAME="saiacpoctfstate"
+export CONTAINER_NAME="sa-poc-tfstate"
 
 # Create resource group
 az group create --name $RESOURCE_GROUP_NAME --location westeurope
